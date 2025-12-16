@@ -30,12 +30,13 @@ function makepayment(callback) {
 function confirmDelivery() {
     setTimeout(() => {
         console.log("Food delivery successfully");
+        callback();
     }, 1000);
 }
  
 login("Ali",() => {
     selectRestaurant(()=> {
-    placeorder(()=> {
+   placeorder(()=> {
     makepayment(() => {
     confirmDelivery();    
             });
@@ -43,3 +44,20 @@ login("Ali",() => {
     });
 });
 
+let promise = new promise ((resolve, reject) => {
+    let wifi = false;
+
+    if (wifi) {
+        resolve("wifi is available");
+    } else {
+        reject("wifi not available");
+    }
+});
+// promise handling - promise changing
+promise
+.then((result) => {
+    console.log(result);
+})
+.cath((e) => {
+    console.log(e);
+});
